@@ -13,5 +13,5 @@
 /tmp
 
 # Config Files
-database.yml
-examples.txt
+**/database.yml
+**/examples.txt
