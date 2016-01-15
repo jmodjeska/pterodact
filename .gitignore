@@ -11,3 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Config Files
+database.yml
+examples.txt
