@@ -1,1 +1,26 @@
-0 students
+<h1><%= "#{pluralize(@students.count, "student")}" %></h1>
+
+<table class = "pure-table pure-table-bordered">
+    <thead>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Title</td>
+            <td>Department</td>
+            <td>Mozzer ID</td>
+        </tr>
+    </thead>
+    <tbody>
+
+    <% @students.each do |c| %>
+        <tr>
+            <td><%= c.first_name %></td>            
+            <td><%= c.last_name %></td>            
+            <td><%= c.title %></td>            
+            <td><%= c.department %></td>            
+            <td><%= c.moz_number %></td>            
+        </tr>
+    <% end %>
+
+    </tbody>
+</table>

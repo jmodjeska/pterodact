@@ -1,1 +1,26 @@
-0 courses
+<h1><%= "#{pluralize(@courses.count, "course")}" %></h1>
+
+<table class = "pure-table pure-table-bordered">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Catalog</td>
+            <td>Description</td>
+            <td>Date</td>
+            <td>Size</td>
+        </tr>
+    </thead>
+    <tbody>
+
+    <% @courses.each do |c| %>
+        <tr>
+            <td><%= c.name %></td>            
+            <td><%= c.catalog %></td>            
+            <td><%= c.description %></td>            
+            <td><%= c.offer_date %></td>            
+            <td><%= c.size %></td>            
+        </tr>
+    <% end %>
+
+    </tbody>
+</table>
