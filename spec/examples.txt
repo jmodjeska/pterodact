@@ -1,3 +1,4 @@
-example_id                                | status | run_time        |
------------------------------------------ | ------ | --------------- |
-./spec/features/list_courses_spec.rb[1:1] | failed | 0.05947 seconds |
+example_id                                 | status | run_time        |
+------------------------------------------ | ------ | --------------- |
+./spec/features/list_courses_spec.rb[1:1]  | passed | 0.02414 seconds |
+./spec/features/list_students_spec.rb[1:1] | passed | 0.28625 seconds |
