@@ -1,12 +1,14 @@
 require 'rails_helper'
 
-RSpec.feature 'Listing all courses' do
-    scenario 'returns a message when there are no courses to view', type: :feature do
+RSpec.feature 'Loading a listing page' do
+    scenario 'includes top navigation', type: :feature do
         visit '/'
         click_link 'Courses'
 
         expect(current_url).to eq(courses_url)
         expect(page).to have_content('0 courses')
+        # Check for nav
+        expect(page).to have_content('Home')
     end
 
     scenario 'displays the available courses', type: feature do

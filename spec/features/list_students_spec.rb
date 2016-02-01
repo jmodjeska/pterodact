@@ -7,6 +7,8 @@ RSpec.feature 'Listing all students' do
 
         expect(current_url).to eq(students_url)
         expect(page).to have_content('0 students')
+        # Check for nav
+        expect(page).to have_content('Home')
     end
 
     scenario 'displays the list of students', type: feature do
