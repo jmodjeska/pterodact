@@ -1,17 +1,19 @@
 require 'rails_helper'
 
-RSpec.feature 'Loading a listing page' do
-    scenario 'includes top navigation', type: :feature do
+RSpec.feature 'Loading all courses' do
+    scenario "displays no courses if there aren't any", type: :feature do
         visit '/'
         click_link 'Courses'
-
         expect(current_url).to eq(courses_url)
+
         expect(page).to have_content('0 courses')
-        # Check for nav
-        expect(page).to have_content('Home')
     end
 
-    scenario 'displays the available courses', type: feature do
+    scenario 'displays the available courses', type: :feature do
+        visit '/'
+        click_link 'Courses'
+        expect(current_url).to eq(courses_url)
+
         course1 = Course.create!(
             name: 'Test Course 1', 
             catalog: 'TEST1234', 

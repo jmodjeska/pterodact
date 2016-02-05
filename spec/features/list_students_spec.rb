@@ -4,14 +4,24 @@ RSpec.feature 'Listing all students' do
     scenario 'returns a message when there are no students to view', type: :feature do
         visit '/'
         click_link 'Students'
-
         expect(current_url).to eq(students_url)
-        expect(page).to have_content('0 students')
-        # Check for nav
+
         expect(page).to have_content('Home')
     end
 
+    scenario "displays no students if there aren't any", type: :feature do
+        visit '/'
+        click_link 'Students'
+        expect(current_url).to eq(students_url)
+    
+        expect(page).to have_content('0 students')
+    end
+
     scenario 'displays the list of students', type: feature do
+        visit '/'
+        click_link 'Students'
+        expect(current_url).to eq(students_url)
+
         student1 = Student.create!(
             first_name: 'Ada', 
             last_name: 'Lovelace',
