@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Listing all students' do
     scenario 'returns a message when there are no students to view', type: :feature do
         visit '/'
-        click_link 'Students'
+        click_link('Students', match: :first)
         expect(current_url).to eq(students_url)
 
         expect(page).to have_content('Home')
@@ -11,7 +11,7 @@ RSpec.feature 'Listing all students' do
 
     scenario "displays no students if there aren't any", type: :feature do
         visit '/'
-        click_link 'Students'
+        click_link('Students', match: :first)
         expect(current_url).to eq(students_url)
     
         expect(page).to have_content('0 students')
@@ -19,7 +19,7 @@ RSpec.feature 'Listing all students' do
 
     scenario 'displays the list of students', type: feature do
         visit '/'
-        click_link 'Students'
+        click_link('Students', match: :first)
         expect(current_url).to eq(students_url)
 
         student1 = Student.create!(
@@ -45,7 +45,7 @@ RSpec.feature 'Listing all students' do
         )
         
         visit '/'
-        click_link 'Students'
+        click_link('Students', match: :first)
         
         expect(current_url).to eq(students_url)
         expect(page).to have_content('3 students')

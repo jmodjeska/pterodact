@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Loading all courses' do
     scenario "displays no courses if there aren't any", type: :feature do
         visit '/'
-        click_link 'Courses'
+        click_link('Courses', match: :first)
         expect(current_url).to eq(courses_url)
 
         expect(page).to have_content('0 courses')
@@ -11,7 +11,7 @@ RSpec.feature 'Loading all courses' do
 
     scenario 'displays the available courses', type: :feature do
         visit '/'
-        click_link 'Courses'
+        click_link('Courses', match: :first)
         expect(current_url).to eq(courses_url)
 
         course1 = Course.create!(
@@ -37,7 +37,7 @@ RSpec.feature 'Loading all courses' do
         )
         
         visit '/'
-        click_link 'Courses'
+        click_link('Courses', match: :first)
         
         expect(current_url).to eq(courses_url)
         expect(page).to have_content('3 courses')

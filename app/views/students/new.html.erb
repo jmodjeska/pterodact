@@ -1,0 +1,34 @@
+<h1>Create a Student</h1>
+
+<%= form_for @student do |f| %>
+    <div class="field">
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name %>
+    </div>
+
+    <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+        <%= f.label :department %><br>
+        <%= f.text_field :department %>
+    </div>
+
+    <div class="field">
+        <%= f.label :moz_number %><br>
+        <%= f.text_field :moz_number %>
+    </div>
+
+    <br>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
