@@ -29,7 +29,7 @@ RSpec.feature 'Creating a new student', type: :feature do
         fill_in 'student_last_name', with: ''
         click_button 'Create Student'
 
-        expect(current_path).to eq(new_student_path)
+        expect(current_path).to eq(students_path)
         expect(page).to have_content('error')
     end
 end

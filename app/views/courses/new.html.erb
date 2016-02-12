@@ -1,34 +1,3 @@
-<h1>Create a Course</h1>
+<h1>Create a course</h1>
 
-<%= form_for @course do |f| %>
-    <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
-    </div>
-
-    <div class="field">
-        <%= f.label :catalog %><br>
-        <%= f.text_field :catalog %>
-    </div>
-
-    <div class="field">
-        <%= f.label :description %><br>
-        <%= f.text_field :description %>
-    </div>
-
-    <div class="field">
-        <%= f.label :offer_date %><br>
-        <%= f.text_field :offer_date %>
-    </div>
-
-    <div class="field">
-        <%= f.label :size %><br>
-        <%= f.text_field :size %>
-    </div>
-
-    <br>
-
-    <div class="actions">
-        <%= f.submit %>
-    </div>
-<% end %>
+<%= render 'form' %>
