@@ -6,4 +6,4 @@
 Hey you guys I am learning Rails and this is my sandbox.
 
 ### Documentation
-There might be more info in the [docs](https://github.com/jmodjeska/pterodact/tree/master/doc)
+There might be more info in the [docs](https://github.com/jmodjeska/pterodact/tree/master/doc).
