@@ -2,10 +2,6 @@ require 'rails_helper'
 
 RSpec.feature 'Loading all courses' do
 
-    before(:each) do
-        DatabaseCleaner.clean
-    end
-
     scenario "displays no courses if there aren't any", type: :feature do
         visit '/'
         click_link('Courses', match: :first)
@@ -18,6 +14,8 @@ RSpec.feature 'Loading all courses' do
         visit '/'
         click_link('Courses', match: :first)
         expect(current_url).to eq(courses_url)
+
+        Course.destroy_all
 
         course1 = Course.create!(
             name: 'Test Course 1', 

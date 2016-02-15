@@ -3,8 +3,14 @@ require 'rails_helper'
 RSpec.feature 'Creating a new enrollment', type: :feature do
 
     before(:each) do
-        FactoryGirl.create(:course)
-        FactoryGirl.create(:student)
+        Course.destroy_all
+        Student.destroy_all
+
+        rand(2..10).times do
+            FactoryGirl.create(:course)
+            FactoryGirl.create(:student)
+        end
+
         @sid = Student.last.id.to_s
         @cid = Course.last.id.to_s
     end

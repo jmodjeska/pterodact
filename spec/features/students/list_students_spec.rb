@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Listing all students' do
+
     scenario 'returns a message when there are no students to view', type: :feature do
         visit '/'
         click_link('Students', match: :first)
@@ -21,6 +22,8 @@ RSpec.feature 'Listing all students' do
         visit '/'
         click_link('Students', match: :first)
         expect(current_url).to eq(students_url)
+
+        Student.destroy_all
 
         student1 = Student.create!(
             first_name: 'Ada', 
