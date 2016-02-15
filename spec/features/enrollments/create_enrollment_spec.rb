@@ -21,8 +21,8 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
 
         expect(current_path).to eq(new_enrollment_path)
 
-        fill_in 'enrollment_course_id', with: @sid
-        fill_in 'enrollment_student_id', with: @cid
+        fill_in 'enrollment_course_id', with: @cid
+        fill_in 'enrollment_student_id', with: @sid
         click_button 'Create Enrollment'
 
         expect(current_path).to eq(enrollment_path(Enrollment.last))

@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.feature 'Loading all courses' do
 
     scenario "displays no courses if there aren't any", type: :feature do
+
+        Course.destroy_all
+
         visit '/'
         click_link('Courses', match: :first)
         expect(current_url).to eq(courses_url)
