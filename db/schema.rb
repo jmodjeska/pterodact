@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129053958) do
+ActiveRecord::Schema.define(version: 20160215055655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20160129053958) do
     t.datetime "updated_at"
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "student_id"
+    t.integer  "courses_id"
+    t.integer  "students_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "enrollments", ["courses_id"], name: "index_enrollments_on_courses_id", using: :btree
+  add_index "enrollments", ["students_id"], name: "index_enrollments_on_students_id", using: :btree
+
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -36,4 +48,18 @@ ActiveRecord::Schema.define(version: 20160129053958) do
     t.datetime "updated_at"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "course_id"
+    t.string   "name"
+    t.datetime "due_date"
+    t.integer  "courses_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["courses_id"], name: "index_tasks_on_courses_id", using: :btree
+
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "students"
+  add_foreign_key "tasks", "courses"
 end
