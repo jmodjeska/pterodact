@@ -1,0 +1,20 @@
+<%= form_for @enrollment do |f| %>
+  <%= render 'shared/errors', object: @enrollment %>
+  <fieldset>
+    <div class="field">
+        <%= f.label :course_id %><br>
+        <%= f.text_field :course_id %>
+    </div>
+
+    <div class="field">
+        <%= f.label :student_id %><br>
+        <%= f.text_field :student_id %>
+    </div>
+
+    <br>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>

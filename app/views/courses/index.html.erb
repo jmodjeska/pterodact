@@ -14,7 +14,7 @@
 
     <% @courses.each do |c| %>
         <tr>
-            <td><%= c.name %></td>            
+            <td><%= link_to c.name, course_url(c) %></td>            
             <td><%= c.catalog %></td>            
             <td><%= c.description %></td>            
             <td><%= c.offer_date %></td>            

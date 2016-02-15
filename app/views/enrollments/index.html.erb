@@ -1,0 +1,24 @@
+<h1><%= "#{pluralize(@enrollments.count, "enrollment")}" %></h1>
+
+<table class = "pure-table pure-table-bordered">
+    <thead>
+        <tr>
+            <td>Course ID</td>
+            <td>Student ID</td>
+        </tr>
+    </thead>
+    <tbody>
+
+    <% @enrollments.each do |e| %>
+        <tr>
+            <td><%= e.course_id %></td>            
+            <td><%= e.student_id %></td>            
+        </tr>
+    <% end %>
+
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to('New Enrollment', new_enrollment_path) %>
