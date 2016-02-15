@@ -10,16 +10,18 @@ class CoursesController < ApplicationController
     end
     
     def create
-        # Creates don't have templates
         @course = Course.new(course_params)
         if @course.save
             redirect_to @course, notice: 'Course successfully created.'
         else
+            flash.now[:alert] = 'Course was not saved.'
             render :new
         end
     end
 
     def show
+        @tasks = @course.tasks.all
+        @students = @course.students.all
     end
     
     def edit
