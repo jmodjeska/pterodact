@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Creating a new enrollment', type: :feature do
 
-    before(:all) do
+    before(:each) do
         FactoryGirl.create(:course)
         FactoryGirl.create(:student)
         @sid = Student.last.id.to_s
@@ -20,8 +20,8 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
         click_button 'Create Enrollment'
 
         expect(current_path).to eq(enrollment_path(Enrollment.last))
-        expect(page).to have_content(@sid)
         expect(page).to have_content(@cid)
+        expect(page).to have_content(@sid)
         expect(page).to have_content('Enrollment successfully created.')
     end
 

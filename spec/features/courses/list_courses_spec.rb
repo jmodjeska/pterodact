@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Loading all courses' do
+
+    before(:each) do
+        DatabaseCleaner.clean
+    end
+
     scenario "displays no courses if there aren't any", type: :feature do
         visit '/'
         click_link('Courses', match: :first)
