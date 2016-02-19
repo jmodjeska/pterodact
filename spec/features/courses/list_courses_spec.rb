@@ -14,11 +14,12 @@ RSpec.feature 'Loading all courses' do
     end
 
     scenario 'displays the available courses', type: :feature do
+
+        Course.destroy_all
+
         visit '/'
         click_link('Courses', match: :first)
         expect(current_url).to eq(courses_url)
-
-        Course.destroy_all
 
         course1 = Course.create!(
             name: 'Test Course 1', 

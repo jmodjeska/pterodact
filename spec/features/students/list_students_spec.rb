@@ -23,7 +23,7 @@ RSpec.feature 'Listing all students' do
         click_link('Students', match: :first)
         expect(current_url).to eq(students_url)
 
-        Student.destroy_all
+        # Student.destroy_all
 
         student1 = Student.create!(
             first_name: 'Ada', 

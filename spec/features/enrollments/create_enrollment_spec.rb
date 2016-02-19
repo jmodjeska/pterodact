@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.feature 'Creating a new enrollment', type: :feature do
 
     before(:each) do
-        Course.destroy_all
-        Student.destroy_all
+        # Course.destroy_all
+        # Student.destroy_all
 
         rand(2..10).times do
             FactoryGirl.create(:course)
