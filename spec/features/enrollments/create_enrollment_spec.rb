@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Creating a new enrollment', type: :feature do
-
+    before do
+        @user = FactoryGirl.create(:user)
+        sign_in(@user)
+    end
+      
     before(:each) do
         # Course.destroy_all
         # Student.destroy_all

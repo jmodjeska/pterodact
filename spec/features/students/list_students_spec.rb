@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Listing all students' do
-
+    before do
+        @user = FactoryGirl.create(:user)
+        sign_in(@user)
+    end
+      
     scenario 'returns a message when there are no students to view', type: :feature do
         visit '/'
         click_link('Students', match: :first)

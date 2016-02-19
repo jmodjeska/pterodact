@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Viewing a course', type: :feature do
+  before do
+      @user = FactoryGirl.create(:user)
+      sign_in(@user)
+  end
+      
   scenario 'shows the course details' do
     course = FactoryGirl.create(:course)
 

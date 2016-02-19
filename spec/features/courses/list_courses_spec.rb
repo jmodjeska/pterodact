@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Loading all courses' do
-
+    before do
+        @user = FactoryGirl.create(:user)
+        sign_in(@user)
+    end
+      
     scenario "displays no courses if there aren't any", type: :feature do
 
         Course.destroy_all
