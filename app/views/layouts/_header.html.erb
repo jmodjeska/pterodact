@@ -1,0 +1,25 @@
+<header>
+    <div class="top-bar">
+        <div class="top-bar-title">
+            <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+                <span class="menu-icon dark" data-toggle></span>
+            </span>
+            <strong><%= link_to('Pterodact', root_path) %></strong>
+        </div>
+        <div id="responsive-menu">
+            <div class="top-bar-left">
+                <ul class="menu">
+                    <%= render 'layouts/nav_links' %>
+                </ul>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu">
+                    <% if current_user %>
+                        Signed in as <%= current_user.email %>
+                        <%= link_to('Sign Out', sign_out_path) %>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

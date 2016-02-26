@@ -14,6 +14,10 @@ gem 'puma'
 gem 'bcrypt'
 gem 'email_validator'
 gem 'warden'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+gem 'jquery-datatables-rails'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'byebug'

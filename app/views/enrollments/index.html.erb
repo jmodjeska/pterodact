@@ -13,8 +13,8 @@
     <% @enrollments.each do |e| %>
         <tr>
             <td><%= e.id %></td>
-            <td><%= link_to "#{Student.find_by(:id => e.student_id).first_name} #{Student.find_by(:id => e.student_id).last_name}", student_url(e.student_id) %></td>
-            <td><%= link_to "#{Course.find_by(:id => e.course_id).name}", course_url(e.course_id) %></td>
+            <td><%= link_to "#{e.student.first_name} #{e.student.last_name}", student_url(e.student_id) %></td>
+            <td><%= link_to e.course.name, course_url(e.course_id) %></td>
         </tr>
     <% end %>
 
