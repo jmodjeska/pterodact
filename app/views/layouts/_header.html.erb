@@ -1,25 +1,39 @@
-<header>
-    <div class="top-bar">
-        <div class="top-bar-title">
-            <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-                <span class="menu-icon dark" data-toggle></span>
-            </span>
-            <strong><%= link_to('Pterodact', root_path) %></strong>
-        </div>
-        <div id="responsive-menu">
-            <div class="top-bar-left">
-                <ul class="menu">
-                    <%= render 'layouts/nav_links' %>
-                </ul>
-            </div>
-            <div class="top-bar-right">
-                <ul class="menu">
-                    <% if current_user %>
-                        Signed in as <%= current_user.email %>
-                        <%= link_to('Sign Out', sign_out_path) %>
-                    <% end %>
-                </ul>
-            </div>
-        </div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to image_tag('ptr.png'), root_path, class: "navbar-brand" %>
     </div>
-</header>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Pterodact', root_path %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <%= render 'layouts/nav_links' %>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <p class="navbar-text">
+            <% if current_user %>
+                <%= current_user.email %>
+            <% end %>
+        </p>
+        <li class="dropdown">
+        <% if current_user %>
+            <%= link_to('Sign Out', sign_out_path) %>
+        <% end %>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
