@@ -1,20 +1,24 @@
-</h1><%= "#{pluralize(@users.count, "user")}" %></h1>
+<h1><%= "#{pluralize(@users.count, "user")}" %></h1>
 
-<table class = "pure-table pure-table-bordered">
-  <thead>
-    <tr>
-      <td>Name</td>
-      <td>Email</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class="widetable">
+  <table id="users" class="ptrAppTable table table-striped table-bordered">
+    <thead>
       <tr>
-        <td><%= link_to "#{user.name}", user_url(user) %></td>
-        <td><%= user.email %></td>
+        <td>Name</td>
+        <td>Email</td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to "#{user.name}", user_url(user) %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<p><%= link_to('New User', new_user_path) %></p>
+<br>
+
+<%= link_to('New User', new_user_path) %>
