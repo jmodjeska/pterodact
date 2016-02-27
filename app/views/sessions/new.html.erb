@@ -1,17 +1,22 @@
+<% content_for :title, "Sign In" %>
 <h1>Sign In</h1>
 
-<%= form_tag sign_in_path do %>
-  <fieldset>
-    <div class="field">
+<div class="row">
+  <div class="col-md-4">
+
+    <%= form_tag sign_in_path do %>
+
       <%= label_tag :email %><br />
-      <%= text_field_tag :email, params[:email] %>
-    </div>
-    <div class="field">
+      <%= text_field_tag :email, params[:email], class: 'form-control' %>
+
       <%= label_tag :password %><br />
-      <%= password_field_tag :password %>
-    </div>
-    <div class="actions">
-      <%= submit_tag "Sign In" %>
-    </div>
-  </fieldset>
-<% end %>
+      <%= password_field_tag :password, nil, :class => 'form-control' %>
+
+      <br>
+
+      <%= submit_tag "Sign In", class: 'btn btn-primary' %>
+
+    <% end %>
+
+  </div>
+</div>
