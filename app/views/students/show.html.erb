@@ -1,5 +1,45 @@
 <% content_for :title, "Students" %>
 
-<h1><%= "#{@student.first_name} #{@student.last_name}" %></h1>
+<div class="page-header">
+    <h1><%= "#{@student.first_name} #{@student.last_name}" %></h1>
+</div>
 
-<p><%= link_to('Edit Student', edit_student_path(@student)) %></p>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    Student Mozzer ID <b><%= @student.moz_number %></b>
+    <%= link_to edit_student_path(@student), title: "Edit Student" do %>
+        <i class="glyphicon glyphicon-edit"></i>
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <b>Title</b>: <%= @student.title %><br>
+    <b>Department</b>: <%= @student.department %>
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <b>Student Enrollment Information</b>
+  </div>
+  <div class="panel-body">
+
+    <h2><%= "#{pluralize(@student.enrollments.count, "Enrollment")} for this Student" %></h2>
+    <table id="enrollments" class="ptrAppTable table table-striped table-bordered">
+      <thead>
+        <tr>
+          <td>Course Name</td>
+          <td>Offer Date</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @student.offer_dates.each do |s| %>
+        <tr>
+          <td><%= link_to Course.find( s.course_id ).name, course_url(s.course_id) %></td>
+          <td><%= s.date %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div><!-- panel-body -->
+</div><!-- panel -->

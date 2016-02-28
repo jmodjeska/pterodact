@@ -1,6 +1,8 @@
 <% content_for :title, "Users" %>
 
-<h1><%= "#{pluralize(@users.count, "user")}" %></h1>
+<div class="page-header">
+  <h1><%= "#{pluralize(@users.count, "user")}" %></h1>
+</div>
 
 <div class="widetable">
   <table id="users" class="ptrAppTable table table-striped table-bordered">

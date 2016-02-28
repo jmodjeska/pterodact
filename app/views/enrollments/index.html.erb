@@ -1,6 +1,8 @@
 <% content_for :title, "Enrollments" %>
 
-<h1><%= "#{pluralize(@enrollments.count, "enrollment")}" %></h1>
+<div class="page-header">
+    <h1><%= "#{pluralize(@enrollments.count, "enrollment")}" %></h1>
+</div>
 
 <div class="widetable">
     <table id="enrollments" class="ptrAppTable table table-striped table-bordered">
@@ -9,6 +11,7 @@
                 <td>Enrollment ID</td>
                 <td>Student</td>
                 <td>Course</td>
+                <td>Offer Date</td>
             </tr>
         </thead>
         <tbody>
@@ -17,7 +20,8 @@
             <tr>
                 <td><%= e.id %></td>
                 <td><%= link_to "#{e.student.first_name} #{e.student.last_name}", student_url(e.student_id) %></td>
-                <td><%= link_to e.offer_date.course_and_offer_date, course_url(e.course_id) %></td>
+                <td><%= link_to e.offer_date.course.name, course_url(e.offer_date.course_id) %></td>
+                <td><%= e.offer_date.date %></td>
             </tr>
         <% end %>
     

@@ -1,6 +1,9 @@
 <% content_for :title, "Enrollments" %>
 
-<h1>Enrollment Created (ID <%= @enrollment.id %>)</h1>
+<div class="page-header">
+    <h1>Enrollment Created (ID <%= @enrollment.id %>)</h1>
+</div>
+
 <h2>Course</h2> 
 <ul>
     <li>Name: <%= @enrollment.offer_date.course.name %></li>

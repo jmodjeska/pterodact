@@ -1,6 +1,8 @@
 <% content_for :title, "Courses" %>
 
-<h1><%= "#{pluralize(@courses.count, "course")}" %></h1>
+<div class="page-header">
+    <h1><%= "#{pluralize(@courses.count, "course")}" %></h1>
+</div>
 
 <div class="widetable">
     <table id="courses" class="ptrAppTable table table-striped table-bordered">
@@ -10,6 +12,7 @@
                 <td>Catalog</td>
                 <td>Description</td>
                 <td>Dates Scheduled</td>
+                <td>Total Enrollment</td>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +23,7 @@
                 <td><%= c.catalog %></td> 
                 <td><%= c.description %></td>
                 <td><%= c.offer_dates.count %></td>
+                <td><%= c.students.all.count %></td>
             </tr>
         <% end %>
     

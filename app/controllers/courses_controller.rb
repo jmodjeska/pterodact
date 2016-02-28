@@ -21,7 +21,8 @@ class CoursesController < ApplicationController
 
     def show
         @offer_dates = @course.offer_dates.all
-        @students = @course.students.all
+        @students = @course.students.distinct
+        @total_enrollment = @course.students.all
     end
     
     def edit

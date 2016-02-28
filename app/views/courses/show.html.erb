@@ -1,58 +1,94 @@
 <% content_for :title, "Courses" %>
 
-<h1><%= @course.name %></h1>
-<h2>Catalog ID: <%= @course.catalog %></h2>
-<h2>Description: <%= @course.description %></h2>
+<div class="page-header">
+  <h1>Course: <%= @course.name %></h1>
+</div>
 
-<p><%= link_to('Edit Course', edit_course_path(@course)) %></p>
-<p><%= link_to('Add Offer Date', new_course_offer_date_path(@course)) %></p>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    Catalog ID <b><%= @course.catalog %></b>
+    <%= link_to edit_course_path(@course), title: "Edit Course" do %>
+        <i class="glyphicon glyphicon-edit"></i>
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <%= @course.description %>
+  </div>
+</div>
 
-<article>
-  <header>
-    <h2><%= "#{pluralize(@offer_dates.count, "Offer Date")} for this Course" %></h2>
-    <table id="offer_dates" class="ptrAppTable table table-striped table-bordered">
-      <thead>
-        <tr>
-          <td>Offer Date</td>
-          <td>Capacity</td>
-        </tr>
-      </thead>
-      <tbody>
-        <% @offer_dates.each do |od| %>
-        <tr>
-          <td><%= od.date %></td>
-          <td><%= od.size %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </header>
-</article>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <b>Course Offering &amp; Enrollment Information</b>
+  </div>
+  <div class="panel-body">
 
-<article>
-  <header>
-    <h2><%= "#{pluralize(@students.count, "Student")} Enrolled" %></h2>
-    <table id="students" class="ptrAppTable table table-striped table-bordered">
-      <thead>
-        <tr>
-          <td>First Name</td>
-          <td>Last Name</td>
-          <td>Title</td>
-          <td>Department</td>
-          <td>Mozzer ID</td>
-        </tr>
-      </thead>
-      <tbody>
-        <% @students.each do |student| %>
-        <tr>
-          <td><%= student.first_name %></td>
-          <td><%= student.last_name %></td>
-          <td><%= student.title %></td>
-          <td><%= student.department %></td>
-          <td><%= student.moz_number %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </header>
-</article>
+    <!-- Nav tabs -->
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#offer_dates" aria-controls="offer_dates" role="tab" data-toggle="tab">Offer Dates
+        <span class="badge"><%= @offer_dates.count %></span></a>
+      </li>
+      <li role="presentation"><a href="#students" aria-controls="students" role="tab" data-toggle="tab">Students
+        <span class="badge"><%= @total_enrollment.count %></span></a>
+      </li>
+    </ul>
+  
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+      <div role="tabpanel" class="tab-pane fade in active" id="offer_dates">
+        <h2><%= "#{pluralize(@offer_dates.count, "Offer Date")} for this Course" %></h2>
+        <table id="offer_dates" class="ptrAppTable table table-striped table-bordered">
+          <thead>
+            <tr>
+              <td>Offer Date</td>
+              <td>Capacity</td>
+              <td>Enrolled</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @offer_dates.each do |od| %>
+            <tr>
+              <td><%= od.date %></td>
+              <td><%= od.size %></td>
+              <td><%= od.students.count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to('Add Offer Date', new_course_offer_date_path(@course)) %>
+      </div>
+  
+      <div role="tabpanel" class="tab-pane fade" id="students">
+        <h2><%= "#{pluralize(@total_enrollment.count, "Enrollment")} for this Course" %></h2>
+        <table id="students" class="ptrAppTable table table-striped table-bordered" style="width:100%;">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Title</td>
+              <td>Department</td>
+              <td>Enrolled Date</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @students.each do |student| %>
+             <% student.offer_dates.each do |offer_date| %>
+
+                <tr>
+                  <td><%= link_to(student.full_name, student_path(student)) %></td>
+                  <td><%= student.title %></td>
+                  <td><%= student.department %></td>
+                  <td><%= offer_date.date %></td>
+                </tr>
+
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- tab-content -->
+
+  </div><!-- panel-body -->
+</div><!-- panel -->
+
