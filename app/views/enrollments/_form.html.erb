@@ -8,7 +8,7 @@
 
         <div class="form-group">
           <%= f.label :course %>
-          <%= f.collection_select :course_id, Course.order(:id), :id, :name, {:include_blank => 'Select a Course'}, {class: "form-control"} %>
+          <%= f.collection_select :offer_date_id, OfferDate.order(:id), :id, :course_and_offer_date, {:include_blank => 'Select a Course'}, {class: "form-control"} %>
         </div>
     
         <div class="form-group">

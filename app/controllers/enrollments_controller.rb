@@ -30,7 +30,7 @@ class EnrollmentsController < ApplicationController
 
     private
         def enrollment_params
-            params.require(:enrollment).permit(:course_id, :student_id)
+            params.require(:enrollment).permit(:offer_date_id, :student_id)
         end
         
         def set_enrollment

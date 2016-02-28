@@ -13,13 +13,12 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
     end
       
     before(:each) do
-        rand(2..10).times do
-            FactoryGirl.create(:course)
-            FactoryGirl.create(:student)
-        end
-
+        FactoryGirl.create(:course)
+        FactoryGirl.create(:student)
+        
+        Course.last.offer_dates.create(date: '2016-05-17', size: '14')
         @sid = Student.last.id.to_s
-        @cid = Course.last.id.to_s
+        @cid = Course.last.offer_dates.last.id.to_s
     end
 
     scenario 'succeeds with valid values' do
@@ -28,12 +27,12 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
 
         expect(current_path).to eq(new_enrollment_path)
 
-        selector("#enrollment_course_id", @cid)
+        selector("#enrollment_offer_date_id", @cid)
         selector("#enrollment_student_id", @sid)
         click_button 'Create Enrollment'
 
         expect(current_path).to eq(enrollment_path(Enrollment.last))
-        expect(page).to have_content(@cid)
+        expect(page).to have_content('2016-05-17')
         expect(page).to have_content(@sid)
         expect(page).to have_content('Enrollment successfully created.')
     end

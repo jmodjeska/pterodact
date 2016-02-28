@@ -1,6 +1,5 @@
 class Enrollment < ActiveRecord::Base
-  belongs_to :course
+  belongs_to :offer_date
   belongs_to :student
-
-  validates_presence_of :course_id, :student_id
+  validates_presence_of :offer_date_id, :student_id
 end

@@ -3,8 +3,8 @@
 <h1>Enrollment Created (ID <%= @enrollment.id %>)</h1>
 <h2>Course</h2> 
 <ul>
-    <li>ID: <%= @enrollment.course_id %></li>
-    <li>Name: <%= @enrollment.course.name %></li>
+    <li>Name: <%= @enrollment.offer_date.course.name %></li>
+    <li>Date: <%= @enrollment.offer_date.date %></li>
 </ul>
 <h2>Student</h2>
 <ul>
