@@ -9,9 +9,7 @@
                 <td>Name</td>
                 <td>Catalog</td>
                 <td>Description</td>
-                <td>Date</td>
-                <td>Capacity</td>
-                <td>Enrolled</td>
+                <td>Dates Scheduled</td>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +19,7 @@
                 <td><%= link_to c.name, course_url(c) %></td>            
                 <td><%= c.catalog %></td> 
                 <td><%= c.description %></td>
-                <td><%= c.students.count %></td>
-                <td><%= c.size %></td>            
+                <td><%= c.offer_dates.count %></td>
             </tr>
         <% end %>
     

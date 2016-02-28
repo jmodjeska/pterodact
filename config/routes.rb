@@ -10,16 +10,13 @@ Rails.application.routes.draw do
   # resources in the middle
 
   resources :courses, only: [:index, :new, :create, :show, :edit, :update] do
-    resources :tasks
+    resources :offer_dates
   end
 
   resources :enrollments, only: [:index, :new, :create, :show]
-
-  resources :students, only: [:index, :new, :create, :show, :edit, :update]
-
-  resources :users, only: [:index, :new, :create, :show, :edit, :update]
+  resources :students,    only: [:index, :new, :create, :show, :edit, :update]
+  resources :users,       only: [:index, :new, :create, :show, :edit, :update]
 
   # nonspecific / catch-all routes at the bottom
   root to: 'home#index'
-
 end

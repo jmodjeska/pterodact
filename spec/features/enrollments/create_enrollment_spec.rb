@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-def select_option(form_id, option_id)
+def selector(form_id, option_id)
     within form_id do
-      find("option[value='#{option_id}']").click
+      find("option[value='#{option_id}']").select_option
     end
 end
 
@@ -28,8 +28,8 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
 
         expect(current_path).to eq(new_enrollment_path)
 
-        select_option("#enrollment_course_id", @cid)
-        select_option("#enrollment_student_id", @sid)
+        selector("#enrollment_course_id", @cid)
+        selector("#enrollment_student_id", @sid)
         click_button 'Create Enrollment'
 
         expect(current_path).to eq(enrollment_path(Enrollment.last))
@@ -44,7 +44,7 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
         
         expect(current_path).to eq(new_enrollment_path)
 
-        select_option("#enrollment_student_id", @sid)
+        selector("#enrollment_student_id", @sid)
         click_button 'Create Enrollment'
 
         expect(current_path).to eq(enrollments_path)
