@@ -20,7 +20,6 @@ class CoursesController < ApplicationController
     end
 
     def show
-        @tasks = @course.tasks.all
         @students = @course.students.all
     end
     
@@ -37,7 +36,7 @@ class CoursesController < ApplicationController
 
     private
         def course_params
-            params.require(:course).permit(:name, :catalog, :description, :offer_date, :size)
+            params.require(:course).permit(:name, :catalog, :description, :size)
         end
         
         def set_course

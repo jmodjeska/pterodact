@@ -1,5 +1,13 @@
-<li><%= link_to('Courses', courses_path) %></li>
-<li><%= link_to('Students', students_path) %></li>
-<li><%= link_to('Enrollments', enrollments_path) %></li>
-<li><%= link_to('Users', users_path) %></li>
-
+<% case list %>
+<% when 'view' %>
+    <li><%= link_to('Courses', courses_path) %></li>
+    <li><%= link_to('Students', students_path) %></li>
+    <li><%= link_to('Enrollments', enrollments_path) %></li>
+    <li><%= link_to('Users', users_path) %></li>
+<% when 'add' %>
+    <li><%= link_to('Course', new_course_path) %></li>
+    <li><%= link_to('Course Offering Date', new_course_path) %></li>
+    <li><%= link_to('Student', new_student_path) %></li>
+    <li><%= link_to('Enrollment', new_enrollment_path) %></li>
+    <li><%= link_to('User', new_user_path) %></li>
+<% end %>

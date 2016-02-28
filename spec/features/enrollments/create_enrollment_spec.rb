@@ -1,5 +1,11 @@
 require 'rails_helper'
 
+def select_option(form_id, option_id)
+    within form_id do
+      find("option[value='#{option_id}']").click
+    end
+end
+
 RSpec.feature 'Creating a new enrollment', type: :feature do
     before do
         @user = FactoryGirl.create(:user)
@@ -7,9 +13,6 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
     end
       
     before(:each) do
-        # Course.destroy_all
-        # Student.destroy_all
-
         rand(2..10).times do
             FactoryGirl.create(:course)
             FactoryGirl.create(:student)
@@ -25,8 +28,8 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
 
         expect(current_path).to eq(new_enrollment_path)
 
-        fill_in 'enrollment_course_id', with: @cid
-        fill_in 'enrollment_student_id', with: @sid
+        select_option("#enrollment_course_id", @cid)
+        select_option("#enrollment_student_id", @sid)
         click_button 'Create Enrollment'
 
         expect(current_path).to eq(enrollment_path(Enrollment.last))
@@ -40,9 +43,8 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
         click_link('New Enrollment', match: :first)
         
         expect(current_path).to eq(new_enrollment_path)
-        
-        fill_in 'enrollment_course_id', with: ''
-        fill_in 'enrollment_student_id', with: @sid
+
+        select_option("#enrollment_student_id", @sid)
         click_button 'Create Enrollment'
 
         expect(current_path).to eq(enrollments_path)

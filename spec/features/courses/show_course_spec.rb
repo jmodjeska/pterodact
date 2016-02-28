@@ -14,7 +14,6 @@ RSpec.feature 'Viewing a course', type: :feature do
     expect(page).to have_content(course.name)
     expect(page).to have_content(course.catalog)
     expect(page).to have_content(course.description)
-    expect(page).to have_content(course.offer_date)
     expect(page).to have_content(course.size)
   end
   
@@ -23,18 +22,6 @@ RSpec.feature 'Viewing a course', type: :feature do
       @course1 = FactoryGirl.create(:course)
       @course2 = FactoryGirl.create(:course)
       @course3 = FactoryGirl.create(:course)
-    end
-    
-    scenario 'shows the course tasks' do
-      task1 = @course1.tasks.create(name: 'Task one')
-      task2 = @course1.tasks.create(name: 'Task two')
-      task3 = @course1.tasks.create(name: 'Task three')
-      
-      visit course_url(@course1)
-      
-      expect(page).to have_content('Task one')
-      expect(page).to have_content('Task two')
-      expect(page).to have_content('Task three')
     end
     
     scenario 'shows the course enrollments' do 

@@ -8,7 +8,7 @@ class EnrollmentsController < ApplicationController
     def new
         @enrollment = Enrollment.new
     end
-    
+
     def create
         @enrollment = Enrollment.new(enrollment_params)
         if @enrollment.save

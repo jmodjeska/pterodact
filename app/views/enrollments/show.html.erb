@@ -1,3 +1,13 @@
-<h1>Enrollment ID <%= @enrollment.id %></h1>
-<h2>Course ID <%= @enrollment.course_id %></h2>
-<h2>Student ID <%= @enrollment.student_id %></h2>
+<% content_for :title, "Enrollments" %>
+
+<h1>Enrollment Created (ID <%= @enrollment.id %>)</h1>
+<h2>Course</h2> 
+<ul>
+    <li>ID: <%= @enrollment.course_id %></li>
+    <li>Name: <%= @enrollment.course.name %></li>
+</ul>
+<h2>Student</h2>
+<ul>
+    <li>ID: <%= @enrollment.student_id %></li>
+    <li>Name: <%= @enrollment.student.full_name %></li>
+</ul>

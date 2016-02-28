@@ -1,1 +1,5 @@
+<% content_for :title, "Students" %>
+
 <h1><%= "#{@student.first_name} #{@student.last_name}" %></h1>
+
+<p><%= link_to('Edit Student', edit_student_path(@student)) %></p>

@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+    before_action :set_student, only: [:show, :update, :edit]
+
     def index
         @students = Student.all
     end
@@ -28,6 +30,7 @@ class StudentsController < ApplicationController
         if @student.update(student_params)
             redirect_to @student, notice: 'Student successfully updated.'
         else
+            flash.now[:alert] = 'Student was not updated.'
             render :edit
         end
     end

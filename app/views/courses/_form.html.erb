@@ -1,35 +1,35 @@
-<%= form_for @course do |f| %>
-  <%= render 'shared/errors', object: @course %>
-  <fieldset>
-    <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
-    </div>
+<div class="row">
+  <div class="col-md-4">
 
-    <div class="field">
-        <%= f.label :catalog %><br>
-        <%= f.text_field :catalog %>
-    </div>
+    <%= form_for @course do |f| %>
+      <%= render 'shared/errors', object: @course %>
+      <fieldset>
+        <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control"  %>
+        </div>
+    
+        <div class="form-group">
+            <%= f.label :catalog %>
+            <%= f.text_field :catalog, class: "form-control"  %>
+        </div>
+    
+        <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: "form-control"  %>
+        </div>
 
-    <div class="field">
-        <%= f.label :description %><br>
-        <%= f.text_field :description %>
-    </div>
+        <div class="form-group">
+            <%= f.label :size, 'Capacity' %>
+            <%= f.text_field :size, class: "form-control"  %>
+        </div>
+    
+        <br>
+    
+        <%= f.submit nil, class: 'btn btn-primary' %>
+    
+      </fieldset>
+    <% end %>
 
-    <div class="field">
-        <%= f.label :offer_date %><br>
-        <%= f.text_field :offer_date %>
-    </div>
-
-    <div class="field">
-        <%= f.label :size %><br>
-        <%= f.text_field :size %>
-    </div>
-
-    <br>
-
-    <div class="actions">
-        <%= f.submit %>
-    </div>
-  </fieldset>
-<% end %>
+  </div>
+</div>

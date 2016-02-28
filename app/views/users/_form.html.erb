@@ -1,24 +1,30 @@
-<%= form_for @user do |f| %>
-  <%= render 'shared/errors', object: @user %>
-  <fieldset>
-    <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
-    </div>
-    <div class="field">
-        <%= f.label :email %><br>
-        <%= f.email_field :email %>
-    </div>
-    <div class="field">
-        <%= f.label :password %><br>
-        <%= f.password_field :password %>
-    </div>
-    <div class="field">
-        <%= f.label :password_confirmation %><br>
-        <%= f.password_field :password_confirmation %>
-    </div>
-    <div class="actions">
-        <%= f.submit %>
-    </div>
-  </fieldset>
-<% end %>
+<div class="row">
+  <div class="col-md-4">
+
+    <%= form_for @user do |f| %>
+      <%= render 'shared/errors', object: @user %>
+      <fieldset>
+        <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+    
+        <%= f.submit nil, class: 'btn btn-primary' %>
+    
+      </fieldset>
+    <% end %>
+
+  </div> 
+</div

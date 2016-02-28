@@ -15,7 +15,7 @@ RSpec.feature 'Creating a new course', type: :feature do
         fill_in 'course_name', with: 'Aardwolf Course'
         fill_in 'course_catalog', with: 'XYZ1234'
         fill_in 'course_description', with: 'Learn how to live like a mad baller aardwolf'
-        # Leaving offer_date and size blank on purpose
+        fill_in 'course_size', with: '2'
         click_button 'Create Course'
 
         expect(current_path).to eq(course_path(Course.last))
@@ -32,7 +32,7 @@ RSpec.feature 'Creating a new course', type: :feature do
         fill_in 'course_name', with: ''
         fill_in 'course_catalog', with: 'XYZ1234'
         fill_in 'course_description', with: 'Learn how to live like a mad baller aardwolf'
-        # Leaving offer_date and size blank on purpose
+        # Leaving size blank on purpose
         click_button 'Create Course'
 
         expect(current_path).to eq(courses_path)

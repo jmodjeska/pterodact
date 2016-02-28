@@ -29,21 +29,18 @@ RSpec.feature 'Loading all courses' do
             name: 'Test Course 1', 
             catalog: 'TEST1234', 
             description: 'Amazing course that teaches you stuff.', 
-            offer_date: '2016-02-17', 
             size: 16
         )
         course2 = Course.create!(
             name: 'Test Course 2', 
             catalog: 'TEST5678', 
             description: 'Amazing course that teaches you things.', 
-            offer_date: '2016-02-06', 
             size: 16
         )
         course3 = Course.create!(
             name: 'Test Course 3', 
             catalog: 'TEST3333', 
             description: 'Lame course that teaches you nothing.', 
-            offer_date: '2016-02-26', 
             size: 16
         )
         

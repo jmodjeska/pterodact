@@ -8,7 +8,7 @@ RSpec.feature 'Signing the user out of the application' do
     
     click_link 'Sign Out'
     
-    expect(current_path).to eq(landing_path)
-    expect(page).to have_content('signed out')
+    expect(current_path).to eq(sign_in_path)
+    expect(page).to have_content('Login')
   end
 end
