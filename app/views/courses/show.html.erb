@@ -7,8 +7,8 @@
 <div class="panel panel-info">
   <div class="panel-heading">
     Catalog ID <b><%= @course.catalog %></b>
-    <%= link_to edit_course_path(@course), title: "Edit Course" do %>
-        <i class="glyphicon glyphicon-edit"></i>
+    <%= link_to edit_course_path(@course), :id => "edit_course" do %>
+        <i data-toggle="tooltip" data-placement="right" title="Edit course information" class="glyphicon glyphicon-edit"></i>
     <% end %>
   </div>
   <div class="panel-body">
@@ -23,9 +23,9 @@
   <div class="panel-body">
 
     <!-- Nav tabs -->
-    <ul class="nav nav-pills" role="tablist">
+    <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
-        <a href="#offer_dates" aria-controls="offer_dates" role="tab" data-toggle="tab">Offer Dates
+        <a href="#offer_dates" aria-controls="offer_dates" role="tab" data-toggle="tab">Scheduled Dates
         <span class="badge"><%= @offer_dates.count %></span></a>
       </li>
       <li role="presentation"><a href="#students" aria-controls="students" role="tab" data-toggle="tab">Students
@@ -36,6 +36,7 @@
     <!-- Tab panes -->
     <div class="tab-content">
 
+      <!-- offer dates -->
       <div role="tabpanel" class="tab-pane fade in active" id="offer_dates">
         <h2><%= "#{pluralize(@offer_dates.count, "Offer Date")} for this Course" %></h2>
         <table id="offer_dates" class="ptrAppTable table table-striped table-bordered">
@@ -44,6 +45,7 @@
               <td>Offer Date</td>
               <td>Capacity</td>
               <td>Enrolled</td>
+              <td>Action</td>
             </tr>
           </thead>
           <tbody>
@@ -52,13 +54,17 @@
               <td><%= od.date %></td>
               <td><%= od.size %></td>
               <td><%= od.students.count %></td>
+              <td><%= link_to('Edit', edit_course_offer_date_path(@course, od)) %></td>
             </tr>
             <% end %>
           </tbody>
         </table>
-        <%= link_to('Add Offer Date', new_course_offer_date_path(@course)) %>
+        <%= link_to(new_course_offer_date_path(@course)) do %>
+          <h5><i class="fa fa-plus-circle"></i> Add Offer Date</h5>
+        <% end %>
       </div>
   
+      <!-- students -->
       <div role="tabpanel" class="tab-pane fade" id="students">
         <h2><%= "#{pluralize(@total_enrollment.count, "Enrollment")} for this Course" %></h2>
         <table id="students" class="ptrAppTable table table-striped table-bordered" style="width:100%;">
@@ -88,7 +94,7 @@
       </div>
 
     </div><!-- tab-content -->
-
+    
   </div><!-- panel-body -->
 </div><!-- panel -->
 

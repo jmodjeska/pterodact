@@ -1,0 +1,28 @@
+html{
+	background:url('dashboard.jpg') no-repeat center center;
+	min-height:100%;
+	background-size: cover;
+    background-color: transparent;
+}
+
+body{
+	/* Workaround for some mobile browsers */
+	min-height:100%;
+    background-color: transparent;
+}
+
+h1 {
+    color: white;
+}
+
+.page-header {
+    border: none;
+}
+
+hr {
+    display: none;
+}
+
+a {
+    color: white;
+}

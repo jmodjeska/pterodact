@@ -7,11 +7,11 @@
 <div class="panel panel-info">
   <div class="panel-heading">
     User ID <b><%= @user.id %></b>
+    <%= link_to edit_user_path(@user), title: "Edit User" do %>
+        <i data-toggle="tooltip" data-placement="right" title="Edit user information" class="glyphicon glyphicon-edit"></i>
+    <% end %>
   </div>
   <div class="panel-body">
     <%= @user.email %>    
-    <%= link_to edit_user_path(@user), title: "Edit User" do %>
-        <i class="glyphicon glyphicon-edit"></i>
-    <% end %>
   </div>
 </div>

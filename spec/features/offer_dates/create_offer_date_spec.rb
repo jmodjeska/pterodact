@@ -14,11 +14,10 @@ RSpec.feature 'Creating a date', type: :feature do
         
         expect(current_path).to eq(new_course_offer_date_path(course))
         
-        fill_in 'Date', with: '2016-02-22'
         fill_in 'Capacity', with: '21'
-        click_button 'Create Offer Date'
+        click_button 'Create Offer date'
         
-        expect(current_path).to eq(course_offer_date_path(course, OfferDate.last))
+        expect(current_path).to eq(course_path(course))
         expect(page).to have_content(OfferDate.last.date)
     end
 end

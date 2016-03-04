@@ -21,7 +21,7 @@ RSpec.feature 'Creating a new student', type: :feature do
 
         expect(current_path).to eq(student_path(Student.last))
         expect(page).to have_content('Wolfgang')
-        expect(page).to have_content('Student successfully created.')
+        expect(page).to have_content('successfully created.')
     end
 
     scenario 'fails if the first and last name are not provided' do

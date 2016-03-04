@@ -1,13 +1,45 @@
-<h1>Welcome to Pterodact Learning Management System and Occasional Accidental Destroyer of Worlds</h1>
+<div class="page-header">
+    <h1>Pterodact Learning Management System</h1>
+</div>
 
-<h2>You can see ...</h2>
-<ul>
-    <li><%= link_to 'Courses', courses_url %></li>
-    <li><%= link_to 'Students', students_url %></li>
-    <li><%= link_to 'Users', users_url %></li>
-    <% unless current_user %>
-        <li><%= link_to 'Sign In', sign_in_url %></li>
-    <% end %>
+<div class="row">
+  <div class="col-md-6">
 
-</ul>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Dashboard</div>
+      <div class="list-group">
+        <%= link_to courses_url, { :class => "list-group-item do" } do %>
+            Courses <span class="badge"><%= Course.count %></span>
+        <% end %>
     
+        <%= link_to students_url, { :class => "list-group-item do" } do %>
+            Students <span class="badge"><%= Student.count %></span>
+        <% end %>
+    
+        <%= link_to enrollments_url, { :class => "list-group-item do" } do %>
+            Enrollments <span class="badge"><%= Enrollment.count %></span>
+        <% end %>
+    
+        <%= link_to users_url, { :class => "list-group-item do" } do %>
+            Users <span class="badge"><%= User.count %></span>
+        <% end %>
+      </div>
+    </div>
+
+  </div><!-- /col -->
+</div><!-- /row -->
+
+<hr>
+<div>
+  <a href="https://twitter.com/jmodjeska">
+    <i class="fa fa-twitter" data-toggle="tooltip" data-placement="bottom" title="Visit @jmodjeska on Twitter"></i>
+  </a> &nbsp;
+
+  <a href="https://github.com/jmodjeska/pterodact">
+    <i class="fa fa-github" data-toggle="tooltip" data-placement="bottom" title="Pterodact source on Github"></i>
+  </a> &nbsp;
+
+  <a href="http://creativecommons.org/licenses/by-sa/4.0/">
+    <i class="fa fa-copyright" data-toggle="tooltip" data-placement="bottom" title="License CC-BY-SA 4.0"></i>
+  </a>
+</div>

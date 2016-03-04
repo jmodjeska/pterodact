@@ -11,7 +11,7 @@ RSpec.feature 'Editing a course', type: :feature do
     
     visit course_url(course)
     
-    click_link 'Edit Course'
+    click_link 'edit_course'
     
     expect(current_path).to eq(edit_course_path(course))
     expect(find_field('Name').value).to eq(course.name)
@@ -23,5 +23,4 @@ RSpec.feature 'Editing a course', type: :feature do
     expect(current_path).to eq(course_path(course))
     expect(page).to have_content('Updated course name')
   end
-  
 end

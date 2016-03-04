@@ -8,7 +8,7 @@
   <div class="panel-heading">
     Student Mozzer ID <b><%= @student.moz_number %></b>
     <%= link_to edit_student_path(@student), title: "Edit Student" do %>
-        <i class="glyphicon glyphicon-edit"></i>
+        <i data-toggle="tooltip" data-placement="right" title="Edit student information" class="glyphicon glyphicon-edit"></i>
     <% end %>
   </div>
   <div class="panel-body">

@@ -1,8 +1,8 @@
 body {
-    margin: 20px;
+    padding: 20px;
 }
 
-.navbar {
+.nav-top {
     margin-bottom: 50px;
 }
 
@@ -10,6 +10,17 @@ body {
     min-width: 900px;
     margin: 20px auto;
 }
+
+.navbar-brand {
+    font-family: 'roboto_slablight';
+    font-weight: bold;
+}
+
+.form-control-date {
+    display: block;
+}
+
+.form-control-date:after { content: '\A'; }
 
 #error_explanation {
   color: red;
@@ -29,6 +40,10 @@ body {
 h1 {
     font-family: 'roboto_slablight', Arial, sans-serif;
     font-size: 3.3em;
+}
+
+.btn-primary {
+    text-transform: capitalize;
 }
 
 @font-face {

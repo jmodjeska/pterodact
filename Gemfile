@@ -18,6 +18,7 @@ gem 'jquery-datatables-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'byebug'
