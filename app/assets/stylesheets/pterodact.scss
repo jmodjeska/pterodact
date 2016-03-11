@@ -48,7 +48,7 @@ h1 {
 
 @font-face {
     font-family: 'latoregular';
-    src: url(font-path('lato-regular-webfont.eot) + "?#iefix") format('embedded-opentype'),
+    src: url(font-path('lato-regular-webfont.eot') + "?#iefix") format('embedded-opentype'),
          url(font-path('lato-regular-webfont.woff2')) format('woff2'),
          url(font-path('lato-regular-webfont.woff')) format('woff'),
          url(font-path('lato-regular-webfont.ttf')) format('truetype'),
