@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'faker'
 gem 'puma'
 gem 'bcrypt'
 gem 'email_validator'
@@ -24,7 +25,6 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'rails-erd'
 end
 
