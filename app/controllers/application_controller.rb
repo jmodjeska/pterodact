@@ -9,20 +9,29 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
 
     def user_links
-     if warden.user
-      [ OpenStruct.new(name: 'Sign Out', target: sign_out_path) ]
-    else
-      [ OpenStruct.new(name: 'Sign In', target: sign_in_path) ]
-     end
+      if warden.user
+        [ OpenStruct.new(name: 'Sign Out', target: sign_out_path) ]
+      else
+        [ OpenStruct.new(name: 'Sign In', target: sign_in_path) ]
+      end
     end
     helper_method :user_links
 
-    def display_navbar_logged_in
+    def select_navbar
       if warden.user
-        'render navbar_logged_in'
+        'layouts/navbar_logged_in'
+      else
+        'layouts/navbar_logged_out'
       end
     end
-    helper_method :display_navbar_logged_in
+    helper_method :select_navbar
+
+    def get_user_email
+      if warden.user
+        current_user.email
+      end
+    end
+    helper_method :get_user_email
 
     def authorize
       alert = 'Hi there. You are not signed in yet. How about we do that now?'

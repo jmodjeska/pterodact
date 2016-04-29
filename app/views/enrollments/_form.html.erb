@@ -2,7 +2,7 @@
   <div class="col-md-4">
 
     <%= form_for @enrollment do |f| %>
-    
+
       <%= render 'shared/errors', object: @enrollment %>
       <fieldset>
 
@@ -10,16 +10,16 @@
           <%= f.label :course %>
           <%= f.collection_select :offer_date_id, OfferDate.order(:id), :id, :course_and_offer_date, {:include_blank => 'Select a Course'}, {class: "form-control"} %>
         </div>
-    
+
         <div class="form-group">
           <%= f.label :student %>
           <%= f.collection_select :student_id, Student.order(:id), :id, :full_name, {:include_blank => 'Select a Student'}, {class: "form-control"} %>
         </div>
-    
+
         <br>
-    
+
         <%= f.submit nil, class: 'btn btn-primary' %>
-    
+
       </fieldset>
     <% end %>
 

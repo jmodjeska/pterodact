@@ -5,10 +5,10 @@ class OfferDatesController < ApplicationController
     def new
         @offer_date = @course.offer_dates.build
     end
-    
+
     def create
         @offer_date = @course.offer_dates.build(offer_date_params)
-        
+
         if @offer_date.save
           redirect_to course_url(@course), notice: "Offer date #{@offer_date.date} added for #{@course.name}."
         else
@@ -28,7 +28,7 @@ class OfferDatesController < ApplicationController
           render :edit
         end
     end
-  
+
     private
       def set_course
           @course = Course.find(params[:course_id])
@@ -37,7 +37,7 @@ class OfferDatesController < ApplicationController
       def set_offer_date
         @offer_date = @course.offer_dates.find(params[:id])
       end
-      
+
       def offer_date_params
         params.require(:offer_date).permit(:date, :size)
       end

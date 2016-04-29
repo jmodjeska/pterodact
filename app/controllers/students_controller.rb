@@ -1,30 +1,34 @@
 class StudentsController < ApplicationController
-    before_action :set_student, only: [:show, :update, :edit]
 
     def index
-        @students = Student.all
+        load_students
     end
 
     def new
-        @student = Student.new
+        build_student
     end
 
     def create
-        @student = Student.new(student_params)
-        if @student.save
-            redirect_to student_url(@student),
-                notice: "Student #{@student.full_name} successfully created."
-        else
-            flash.now[:alert] = 'Student was not saved.'
-            render :new
-        end
+        build_student
+        success_message = "Student #{@student.full_name} successfully created."
+        save_student(success_message, @student) ||
+            fail_to_save('Student was not saved.', :new)
     end
 
     def show
-        @student = Student.find(params[:id])
+        load_student
     end
 
     def edit
+        load_student
+        build_student
+    end
+
+    def update
+        load_student
+        build_student
+        save_student('Student successfully updated.', @student) ||
+            fail_to_save('Student was not updated.', :edit)
     end
 
     def import
@@ -32,23 +36,46 @@ class StudentsController < ApplicationController
         redirect_to students_url, notice: "#{result} students imported."
     end
 
-    def update
-        if @student.update(student_params)
-            redirect_to @student, notice: 'Student successfully updated.'
-        else
-            flash.now[:alert] = 'Student was not updated.'
-            render :edit
+  private
+    def load_students
+        @students ||= student_scope.to_a
+    end
+
+    def load_student
+        @student ||= student_scope.find(params[:id])
+    end
+
+    def build_student
+        @student ||= student_scope.build
+        @student.attributes = student_params
+    end
+
+    def save_student(message, target)
+        if @student.save
+            redirect_to target, notice: message
         end
     end
 
-  private
-    def student_params
-      params.require(:student).permit(
-        :first_name, :last_name, :title, :department, :moz_number, :manager_id
-      )
+    def fail_to_save(message, render_target)
+        if message
+            flash.now[:alert] = message
+        end
+        render render_target
     end
 
-    def set_student
-        @student = Student.find(params[:id])
+    def student_params
+        student_params = params[:student]
+        student_params ? student_params.permit(
+            :first_name,
+            :last_name,
+            :title,
+            :department,
+            :moz_number,
+            :manager_id
+        ) : {}
+    end
+
+    def student_scope
+        Student.all
     end
 end

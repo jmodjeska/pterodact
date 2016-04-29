@@ -1,44 +1,72 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-  def index 
-    @users = User.all
+
+  def index
+    load_users
   end
-  
-  def new 
-    @user = User.new
+
+  def new
+    build_user
   end
-  
+
   def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to @user, notice: 'User successfully created.'
-    else
-      flash.now[:alert] = 'User was not created.'
-      render :new
-    end
+    build_user
+    save_user('User successfully created.', @user) ||
+      fail_to_save('User was not created.', :new)
   end
-  
+
   def show
+    load_user
   end
-  
-  def edit 
+
+  def edit
+    load_user
   end
-  
-  def update 
-    if @user.update(user_params)
-      redirect_to @user, notice: 'User successfully updated.'
-    else
-      flash.now[:alert] = 'User was not updated.'
-      render :edit
-    end
+
+  def update
+    load_user
+    build_user
+    save_user('User successfully updated.', @user) ||
+      fail_to_save('User was not updated.', :edit)
   end
-  
+
   private
-    def set_user
-      @user = User.find(params[:id])
+    def load_users
+      @users ||= user_scope.to_a
     end
-    
+
+    def load_user
+      @user ||= user_scope.find(params[:id])
+    end
+
+    def build_user
+      @user ||= user_scope.build
+      @user.attributes = user_params
+    end
+
+    def save_user(message, target)
+      if @user.save
+        redirect_to target, notice: message
+      end
+    end
+
+    def fail_to_save(message, render_target)
+      if message
+        flash.now[:alert] = message
+      end
+      render render_target
+    end
+
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      user_params = params[:user]
+      user_params ? user_params.permit(
+        :name,
+        :email,
+        :password,
+        :password_confirmation
+      ) : {}
+    end
+
+    def user_scope
+      User.all
     end
 end

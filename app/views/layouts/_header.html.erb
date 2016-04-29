@@ -13,21 +13,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to 'Pterodact Home', root_path, class: "navbar-brand" %></li>
-        <%= display_navbar_logged_in %>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <p class="navbar-text">
-          <% if current_user %>
-            <i class="glyphicon glyphicon-user"></i>
-              <%= current_user.email %>
-          <% end %>
-        </p>
-        <li class="dropdown">
-          <% user_links.each do |link| %>
-            <%= link_to link.name, link.target %>
-          <% end %>
-        </li>
-      </ul>
+
+        <%= render select_navbar %>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
