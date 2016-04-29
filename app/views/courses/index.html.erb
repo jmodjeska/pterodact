@@ -4,6 +4,11 @@
     <h1><%= "#{pluralize(@courses.count, "course")}" %></h1>
 </div>
 
+<%= link_to new_course_path do %>
+  <h5><i class="fa fa-plus-circle"></i> Create a New Course</h5>
+<% end %>
+
+
 <div class="widetable">
     <table id="courses" class="ptrAppTable table table-striped table-bordered">
         <thead>
@@ -29,9 +34,4 @@
 
         </tbody>
     </table>
-
-    <%= link_to new_course_path do %>
-      <h5><i class="fa fa-plus-circle"></i> Create a New Course</h5>
-    <% end %>
-
 </div>

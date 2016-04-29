@@ -4,6 +4,10 @@
   <h1><%= "#{pluralize(@users.count, "user")}" %></h1>
 </div>
 
+<%= link_to new_user_path do %>
+  <h5><i class="fa fa-plus-circle"></i> Add an New User</h5>
+<% end %>
+
 <div class="widetable">
   <table id="users" class="ptrAppTable table table-striped table-bordered">
     <thead>
@@ -21,9 +25,4 @@
       <% end %>
     </tbody>
   </table>
-
-  <%= link_to new_user_path do %>
-    <h5><i class="fa fa-plus-circle"></i> Add an New User</h5>
-  <% end %>
-
 </div>
