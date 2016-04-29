@@ -1,47 +1,79 @@
 class CoursesController < ApplicationController
-    before_action :set_course, only: [:show, :update, :edit]
-    
+
     def index
-        @courses = Course.all
+        load_courses
     end
 
     def new
-        @course = Course.new
+        build_course
     end
-    
+
     def create
-        @course = Course.new(course_params)
-        if @course.save
-            redirect_to @course, notice: 'Course successfully created.'
-        else
-            flash.now[:alert] = 'Course was not saved.'
-            render :new
-        end
+        build_course
+        save_course('Course successfully created.', @course) ||
+            fail_to_save('Course was not saved.', :new)
     end
 
     def show
-        @offer_dates = @course.offer_dates.all
-        @students = @course.students.distinct
-        @total_enrollment = @course.students.all
+        load_course
+        load_related
     end
-    
+
     def edit
+        load_course
+        build_course
     end
 
     def update
-        if @course.update(course_params)
-          redirect_to @course, notice: 'Course successfully updated.'
-        else
-          render :edit
-        end    
+        load_course
+        build_course
+        save_course('Course successfully updated.', @course) ||
+            fail_to_save('Course was not updated.', :edit)
     end
 
     private
-        def course_params
-            params.require(:course).permit(:name, :catalog, :description)
+        def load_courses
+            @courses ||= course_scope.to_a
         end
-        
-        def set_course
-          @course = Course.find(params[:id])
-        end        
+
+        def load_course
+            @course ||= course_scope.find(params[:id])
+        end
+
+        def load_related
+            @offer_dates ||= @course.offer_dates.all
+            @students ||= @course.students.distinct
+            @total_enrollment ||= @course.students.all
+        end
+
+        def build_course
+            @course ||= course_scope.build
+            @course.attributes = course_params
+        end
+
+        def save_course(message, target)
+            if @course.save
+                redirect_to target, notice: message
+            end
+        end
+
+        def fail_to_save(message, render_target)
+            if message
+                flash.now[:alert] = message
+            end
+            render render_target
+        end
+
+        def course_params
+            course_params = params[:course]
+            course_params ? course_params.permit(
+                :name,
+                :catalog,
+                :description
+            ) : {}
+        end
+
+        def course_scope
+            Course.all
+        end
 end
