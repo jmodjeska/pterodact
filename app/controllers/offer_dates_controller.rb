@@ -10,7 +10,8 @@ class OfferDatesController < ApplicationController
         @offer_date = @course.offer_dates.build(offer_date_params)
 
         if @offer_date.save
-          redirect_to course_url(@course), notice: "Offer date #{@offer_date.date} added for #{@course.name}."
+          success_message = "Offer date #{@offer_date.date} added for #{@course.name}."
+          redirect_to course_url(@course), notice: success_message
         else
             flash.now[:alert] = 'Offer date not saved.'
             render :new

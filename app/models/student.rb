@@ -16,15 +16,17 @@ class Student < ActiveRecord::Base
       :converters => :all,
       :header_converters => lambda { |h| convert_header_name(h) }
     ) do |row|
-      student = find_or_create_by(moz_number: row['moz_number'])
-      student.attributes = row.to_hash.extract!(
+
+      student = Student.where(moz_number: row[:moz_number]).first_or_initialize
+      updates = row.to_hash.extract!(
         :manager_id,
         :department,
         :moz_number,
         :first_name,
         :last_name
       )
-      saved_records += 1 if student.save!
+
+      saved_records += 1 if student.update_attributes!(updates)
     end
       return saved_records
   end
