@@ -4,34 +4,77 @@
     <h1><%= "#{pluralize(@students.count, "student")}" %></h1>
 </div>
 
+<% content_for :title, "Import Students" %>
+
+<!-- begin import block -->
+<a data-toggle="collapse" href="#collapseExample"
+aria-expanded="false" aria-controls="collapseExample">
+  <h5><i class="fa fa-upload"></i> Import Students from File</h5>
+</a>
+
+<div class="collapse" id="collapseExample" style="margin-top: 20px;">
+
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#fileInput').change(function(){
+           var filename = $(this).val().split('\\').pop();
+           $('#selectedFile').text(filename);
+           $('#importFile').removeClass( 'disabled' );
+        });
+      });
+    </script>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <b>Select and import a file</b>
+        </div>
+    <div class="panel-body">
+
+    <%= form_tag import_students_path, multipart: true do %>
+      <span class="btn btn-large btn-default btn-file">
+          <i class="fa fa-folder-open"></i> Select a File
+          <%= file_field_tag :file, id: 'fileInput' %>
+      </span>
+
+      <%= submit_tag "Start Import",
+        class: 'btn btn-primary disabled', id: 'importFile'
+      %>
+    <% end %>
+
+    <p class="info-text" id="selectedFile">None</p>
+
+      </div><!-- panel-body -->
+    </div><!-- panel -->
+</div><!-- collapse -->
+<!-- end import block -->
+
 <div class="widetable">
     <table id="students" class="ptrAppTable table table-striped table-bordered">
         <thead>
             <tr>
                 <td>First Name</td>
                 <td>Last Name</td>
-                <td>Title</td>
                 <td>Department</td>
                 <td>Mozzer ID</td>
+                <td>Manager ID</td>
             </tr>
         </thead>
         <tbody>
-    
+
         <% @students.each do |s| %>
             <tr>
                 <td><%= link_to "#{s.first_name}", student_url(s) %></td>
                 <td><%= link_to "#{s.last_name}", student_url(s) %></td>
-                <td><%= s.title %></td>            
-                <td><%= s.department %></td>            
-                <td><%= s.moz_number %></td>            
+                <td><%= s.department %></td>
+                <td><%= s.moz_number %></td>
+                <td><%= s.manager_id %></td>
             </tr>
         <% end %>
-    
+
         </tbody>
     </table>
-    
+
     <%= link_to new_student_path do %>
       <h5><i class="fa fa-plus-circle"></i> Add an New Student</h5>
     <% end %>
-
 </div>

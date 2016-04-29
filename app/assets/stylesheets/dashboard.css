@@ -1,11 +1,11 @@
-html{
+html {
 	background:url('dashboard.jpg') no-repeat center center;
 	min-height:100%;
 	background-size: cover;
     background-color: transparent;
 }
 
-body{
+body {
 	/* Workaround for some mobile browsers */
 	min-height:100%;
     background-color: transparent;

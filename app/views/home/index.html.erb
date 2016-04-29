@@ -11,15 +11,15 @@
         <%= link_to courses_url, { :class => "list-group-item do" } do %>
             Courses <span class="badge"><%= Course.count %></span>
         <% end %>
-    
+
         <%= link_to students_url, { :class => "list-group-item do" } do %>
             Students <span class="badge"><%= Student.count %></span>
         <% end %>
-    
+
         <%= link_to enrollments_url, { :class => "list-group-item do" } do %>
             Enrollments <span class="badge"><%= Enrollment.count %></span>
         <% end %>
-    
+
         <%= link_to users_url, { :class => "list-group-item do" } do %>
             Users <span class="badge"><%= User.count %></span>
         <% end %>

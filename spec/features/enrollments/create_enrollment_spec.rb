@@ -11,11 +11,11 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
         @user = FactoryGirl.create(:user)
         sign_in(@user)
     end
-      
+
     before(:each) do
         FactoryGirl.create(:course)
         FactoryGirl.create(:student)
-        
+
         Course.last.offer_dates.create(date: '2016-05-17', size: '14')
         @sid = Student.last.id.to_s
         @cid = Course.last.offer_dates.last.id.to_s
@@ -40,7 +40,7 @@ RSpec.feature 'Creating a new enrollment', type: :feature do
     scenario 'fails if the Course is not provided' do
         visit '/enrollments'
         click_link('New Enrollment', match: :first)
-        
+
         expect(current_path).to eq(new_enrollment_path)
 
         selector("#enrollment_student_id", @sid)

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     def authorize
       redirect_to sign_in_url, alert: 'Hi there. You are not signed in yet. How about we do that now?' if current_user.nil?
     end
-    
+
     def warden
       env['warden']
     end

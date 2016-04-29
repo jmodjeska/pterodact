@@ -8,29 +8,29 @@
             <%= f.label :first_name %>
             <%= f.text_field :first_name, class: "form-control" %>
         </div>
-    
+
         <div class="form-group">
             <%= f.label :last_name %>
             <%= f.text_field :last_name, class: "form-control" %>
         </div>
-    
-        <div class="form-group">
-            <%= f.label :title %>
-            <%= f.text_field :title, class: "form-control" %>
-        </div>
-    
+
         <div class="form-group">
             <%= f.label :department %>
             <%= f.text_field :department, class: "form-control" %>
         </div>
-    
+
         <div class="form-group">
             <%= f.label :moz_number, 'Mozzer ID' %>
             <%= f.text_field :moz_number, class: "form-control" %>
         </div>
-    
+
+        <div class="form-group">
+            <%= f.label :manager_id, 'Manager ID' %>
+            <%= f.text_field :manager_id, class: "form-control" %>
+        </div>
+
         <%= f.submit nil, class: 'btn btn-primary' %>
-    
+
       </fieldset>
     <% end %>
 

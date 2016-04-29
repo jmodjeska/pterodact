@@ -12,5 +12,15 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
-  config.assets.paths << "#{Rails.root}/app/assets/fonts" 
+  config.assets.paths << "#{Rails.root}/app/assets/fonts"
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :user_name            => ENV['gmail_username'],
+   :password             => ENV['gmail_password'],
+   :authentication       => "plain",
+  :enable_starttls_auto => true
+  }
 end

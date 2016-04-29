@@ -2,6 +2,10 @@ body {
     padding: 20px;
 }
 
+a:active, a:hover, a:visited, a:link {
+    text-decoration: none;
+}
+
 .nav-top {
     margin-bottom: 50px;
 }
@@ -44,6 +48,41 @@ h1 {
 
 .btn-primary {
     text-transform: capitalize;
+}
+
+.table-smalltext {
+    font-size: 10px;
+}
+
+.info-text {
+  margin-top: 10px;
+  font-style: italic;
+  color: #337ab7;
+}
+
+.info-text::before {
+  content: 'Selected file: '
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
 
 @font-face {

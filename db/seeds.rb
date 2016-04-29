@@ -32,5 +32,5 @@ User.create(
         name: 'Aardwolf Jones',
         email: 'aardwolf@daqron.com',
         password: 'aardwolf',
-        password_confirmation: 'aardwolf' 
+        password_confirmation: 'aardwolf'
 )

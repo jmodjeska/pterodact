@@ -5,7 +5,7 @@ RSpec.feature 'Loading all courses' do
         @user = FactoryGirl.create(:user)
         sign_in(@user)
     end
-      
+
     scenario "displays no courses if there aren't any", type: :feature do
 
         Course.destroy_all
@@ -26,24 +26,24 @@ RSpec.feature 'Loading all courses' do
         expect(current_url).to eq(courses_url)
 
         course1 = Course.create!(
-            name: 'Test Course 1', 
-            catalog: 'TEST1234', 
+            name: 'Test Course 1',
+            catalog: 'TEST1234',
             description: 'Amazing course that teaches you stuff.'
         )
         course2 = Course.create!(
-            name: 'Test Course 2', 
-            catalog: 'TEST5678', 
+            name: 'Test Course 2',
+            catalog: 'TEST5678',
             description: 'Amazing course that teaches you things.'
         )
         course3 = Course.create!(
-            name: 'Test Course 3', 
-            catalog: 'TEST3333', 
+            name: 'Test Course 3',
+            catalog: 'TEST3333',
             description: 'Lame course that teaches you nothing.'
         )
-        
+
         visit '/'
         click_link('Courses', match: :first)
-        
+
         expect(current_url).to eq(courses_url)
         expect(page).to have_content('3 courses')
         expect(page).to have_content(course2.name)

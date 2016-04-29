@@ -12,20 +12,26 @@ class StudentsController < ApplicationController
     def create
         @student = Student.new(student_params)
         if @student.save
-            redirect_to student_url(@student), notice: "Student #{@student.full_name} successfully created."
+            redirect_to student_url(@student),
+                notice: "Student #{@student.full_name} successfully created."
         else
             flash.now[:alert] = 'Student was not saved.'
             render :new
         end
     end
-    
-    def show 
+
+    def show
         @student = Student.find(params[:id])
     end
-    
+
     def edit
     end
-    
+
+    def import
+        result = Student.import(params[:file])
+        redirect_to students_url, notice: "#{result} students imported."
+    end
+
     def update
         if @student.update(student_params)
             redirect_to @student, notice: 'Student successfully updated.'
@@ -37,10 +43,12 @@ class StudentsController < ApplicationController
 
   private
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :title, :department, :moz_number)
+      params.require(:student).permit(
+        :first_name, :last_name, :title, :department, :moz_number, :manager_id
+      )
     end
-    
+
     def set_student
-      @student = Student.find(params[:id])
+        @student = Student.find(params[:id])
     end
 end

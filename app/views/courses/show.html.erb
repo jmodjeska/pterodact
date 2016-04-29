@@ -32,7 +32,7 @@
         <span class="badge"><%= @total_enrollment.count %></span></a>
       </li>
     </ul>
-  
+
     <!-- Tab panes -->
     <div class="tab-content">
 
@@ -63,7 +63,7 @@
           <h5><i class="fa fa-plus-circle"></i> Add Offer Date</h5>
         <% end %>
       </div>
-  
+
       <!-- students -->
       <div role="tabpanel" class="tab-pane fade" id="students">
         <h2><%= "#{pluralize(@total_enrollment.count, "Enrollment")} for this Course" %></h2>
@@ -71,7 +71,6 @@
           <thead>
             <tr>
               <td>Name</td>
-              <td>Title</td>
               <td>Department</td>
               <td>Enrolled Date</td>
             </tr>
@@ -82,7 +81,6 @@
 
                 <tr>
                   <td><%= link_to(student.full_name, student_path(student)) %></td>
-                  <td><%= student.title %></td>
                   <td><%= student.department %></td>
                   <td><%= offer_date.date %></td>
                 </tr>
@@ -94,7 +92,7 @@
       </div>
 
     </div><!-- tab-content -->
-    
+
   </div><!-- panel-body -->
 </div><!-- panel -->
 
