@@ -11,6 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
+npm-debug.log
 
 # Config Files
 database.yml
