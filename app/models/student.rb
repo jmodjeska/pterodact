@@ -10,13 +10,12 @@ class Student < ActiveRecord::Base
   end
 
   def self.import(file)
-    saved_records = 0
+    saved_records = [0, 0] # [new, updated]
     CSV.foreach(file.path,
       :headers => true,
       :converters => :all,
-      :header_converters => lambda { |h| convert_header_name(h) }
+      :header_converters => lambda { |h| convert_column_name(h) }
     ) do |row|
-
       student = Student.where(moz_number: row[:moz_number]).first_or_initialize
       updates = row.to_hash.extract!(
         :manager_id,
@@ -26,14 +25,20 @@ class Student < ActiveRecord::Base
         :last_name
       )
 
-      saved_records += 1 if student.update_attributes!(updates)
+      if student.update_attributes!(updates)
+        student.reload
+        # Increment saved_records[new=0, updated=1] counters
+        inc_type = ( student.created_at == student.updated_at ) ? 0 : 1
+        saved_records[inc_type] += 1
+      else
+        # Do something if we failed to save the record?
+      end
     end
       return saved_records
   end
 
   private
-  def self.convert_header_name(h)
-    # Change column names
+  def self.convert_column_name(h)
     h.downcase.gsub(' - ', '').gsub(' ', '_').gsub('\'', '')
       .gsub('mozzers_manager', 'manager_id')
       .gsub('business_units', 'department')

@@ -12,6 +12,15 @@
     <% end %>
   </div>
   <div class="panel-body">
-    <%= @user.email %>    
+
+    <div class="media user-profile-image">
+      <div class="media-left">
+        <a href="#">
+          <%= image_tag avatar_url(@user, 200) %>
+        </a>
+      </div>
+    </div>
+
+    <%= @user.email %>
   </div>
 </div>

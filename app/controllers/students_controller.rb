@@ -32,8 +32,9 @@ class StudentsController < ApplicationController
     end
 
     def import
-        result = Student.import(params[:file])
-        redirect_to students_url, notice: "#{result} students imported."
+        s_new, s_updated = Student.import(params[:file])
+        msg = "Added #{s_new} new students and updated #{s_updated} students."
+        redirect_to students_url, notice: msg
     end
 
   private
