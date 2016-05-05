@@ -19,4 +19,4 @@ bundle exec rails s
 The server should be available on `localhost:3000`
 
 ## More Docs
-* Database map: [docs](https://github.com/jmodjeska/pterodact/tree/master/doc)
+* [Database map](https://github.com/jmodjeska/pterodact/blob/master/doc/erd.pdf) (PDF) generated with Graphviz and [rails-erd](https://github.com/voormedia/rails-erd).
