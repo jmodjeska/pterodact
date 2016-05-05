@@ -12,12 +12,6 @@ Hey you guys I am learning Rails and this is my sandbox. It's going to be a Lear
 bundle install
 ```
 
-#### Configure Secrets
-```
-mv config/secrets.yml.example config/secrets.yml
-```
-Edit `secrets.yml` to include your dev, test, and prod secret keys.
-
 #### Start the Server
 ```
 bundle exec rails s
