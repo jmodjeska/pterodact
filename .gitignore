@@ -19,3 +19,4 @@ examples.txt
 
 # Ignore application configuration
 /config/application.yml
+/config/secrets.yml
