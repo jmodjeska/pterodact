@@ -23,7 +23,7 @@ end
 for i in 1..100
     Enrollment.create(
         offer_date_id: i,
-        student_id: i
+        student_id: Student.order("RANDOM()").first
     )
 end
 
