@@ -29,7 +29,7 @@ end
 
 User.create(
         name: 'Aardwolf Jones',
-        email: 'aardwolf@daqron.com',
+        email: 'aardwolf@example.com',
         password: 'aardwolf',
         password_confirmation: 'aardwolf'
 )

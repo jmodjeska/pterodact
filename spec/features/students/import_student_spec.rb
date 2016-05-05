@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'awesome_print'
 
 RSpec.feature 'Importing a student CSV', type: :feature do
 
