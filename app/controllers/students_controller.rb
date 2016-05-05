@@ -69,7 +69,6 @@ class StudentsController < ApplicationController
         student_params ? student_params.permit(
             :first_name,
             :last_name,
-            :title,
             :department,
             :moz_number,
             :manager_id
