@@ -28,8 +28,8 @@ for i in 1..100
 end
 
 User.create(
-        name: 'Aardwolf Jones',
-        email: 'aardwolf@example.com',
-        password: 'aardwolf',
-        password_confirmation: 'aardwolf'
+        name: 'Pterodactyl Jones',
+        email: 'pterodact@example.com',
+        password: 'pterodact',
+        password_confirmation: 'pterodact'
 )
