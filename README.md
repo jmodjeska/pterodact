@@ -18,5 +18,8 @@ bundle exec rails s
 ```
 The server should be available on `localhost:3000`
 
+#### Login
+Out of the box, in the dev environment, a working user with the email `aardwolf@example.com` and password `aardwolf` is available for use. Edit seeds.rb to customize.
+
 ## More Docs
 * [Database map](https://github.com/jmodjeska/pterodact/blob/master/doc/erd.pdf) (PDF) generated with Graphviz and [rails-erd](https://github.com/voormedia/rails-erd).
