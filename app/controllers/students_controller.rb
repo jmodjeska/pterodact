@@ -32,9 +32,20 @@ class StudentsController < ApplicationController
     end
 
     def import
-        s_new, s_updated = Student.import(params[:file])
-        msg = "Added #{s_new} new students and updated #{s_updated} students."
-        redirect_to students_url, notice: msg
+        load_students
+        r = Student.import(params[:file])
+        err = "An error occurred. "
+        if r[:bad_format]
+            fail_to_import(err + "Expected columns or values were missing."\
+                " No upload was processed.", students_url)
+        elsif r[:skipped].count > 0
+            fail_to_import(err + "Added #{r[:new]} new students, updated "\
+                "#{r[:updated]}, and skipped #{r[:skipped].count}. "\
+                "Skipped: #{r[:skipped]}", students_url)
+        else
+            msg = "Added #{r[:new]} new and updated #{r[:updated]} students."
+            redirect_to students_url, notice: msg
+        end
     end
 
   private
@@ -62,6 +73,10 @@ class StudentsController < ApplicationController
             flash.now[:alert] = message
         end
         render render_target
+    end
+
+    def fail_to_import(message, target)
+        redirect_to target, alert: message
     end
 
     def student_params

@@ -35,7 +35,7 @@ RSpec.feature 'Importing a student CSV', type: :feature do
         # Verify import was successful: that two new students were added and
         # that one, Marion Coatesworth-Hay (moz_number: 2), was updated
         expect(current_url).to eq(students_url)
-        expect(page).to have_content('2 new students and updated 1 students')
+        expect(page).to have_content('2 new and updated 1 students')
 
         # Verify uploaded students are present
         visit '/students'
@@ -43,25 +43,24 @@ RSpec.feature 'Importing a student CSV', type: :feature do
         expect(page).to have_content('Excalibur McSandwichface')
         expect(page).to have_content('Marion Coatesworth-Hay')
 
-        # # Verify Marion Coatesworth-Hay's manager and department were updated
-        # click_link('Marion', match: :first)
-        # expect(page).to have_content('5903')
-        # expect(page).to have_content('Space')
+        # Verify Marion Coatesworth-Hay's manager and department were updated
+        click_link('Marion', match: :first)
+        expect(page).to have_content('5903')
+        expect(page).to have_content('Space')
     end
 
-    # scenario 'fails if the spreadsheet is not properly formatted' do
-    #     visit '/students'
-    #     click_link('Import Students', match: :first)
+    scenario 'fails if the spreadsheet is not properly formatted' do
+        file_to_upload = Rails.root +
+            'spec/fixtures/files/active_moz_employee_report_bad.csv'
 
-    #     expect(current_url).to eq(import_student_url)
+        visit '/students'
 
-    #     # Import "bad" spreadsheet (missing columns)
+        # Upload bad CSV
+        click_link('Import Students from File', match: :first)
+        attach_file('fileInput', file_to_upload, visible: false)
+        click_button('Start Import')
 
-    #     click_button 'Import Students'
-
-    #     # Expected behavior: fail due to missing column
-
-    #     expect(current_path).to eq(confirm_import_url)
-    #     expect(page).to have_content('error')
-    # end
+        expect(current_url).to eq(students_url)
+        expect(page).to have_content('error occurred')
+    end
 end

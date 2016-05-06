@@ -1,4 +1,10 @@
-# Kill everything and reseed:
+Course.destroy_all
+Student.destroy_all
+Enrollment.destroy_all
+OfferDate.destroy_all
+User.destroy_all
+
+# To kill everything and reseed:
 # RAILS_ENV=development rake db:drop db:create db:migrate db:seed
 
 100.times do
@@ -8,7 +14,10 @@
         description: Faker::Company.catch_phrase,
     )
     3.times do
-        course.offer_dates.create(date: Faker::Date.forward(180), size: rand(1..100))
+        course.offer_dates.create!(
+            date: Faker::Date.forward(180),
+            size: rand(1..100)
+        )
     end
 end
 

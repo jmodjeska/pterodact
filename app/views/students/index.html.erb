@@ -4,8 +4,6 @@
     <h1><%= "#{pluralize(@students.count, "student")}" %></h1>
 </div>
 
-<% content_for :title, "Import Students" %>
-
 <%= link_to new_student_path do %>
   <h5><i class="fa fa-plus-circle"></i> Add an New Student</h5>
 <% end %>
