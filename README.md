@@ -7,6 +7,10 @@ Hey you guys I am learning Rails and this is my sandbox. It's going to be a Lear
 
 ## Up and Running
 
+#### Prerequisites
+* [PostgreSQL](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+* [Redis](http://redis.io/topics/quickstart)
+
 #### Installation
 ```
 bundle install
