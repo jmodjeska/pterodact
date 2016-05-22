@@ -1,23 +1,22 @@
-<% content_for :title, "Courses" %>
+<% content_for :title, t('courses.title') %>
 
 <div class="page-header">
     <h1><%= "#{pluralize(@courses.count, "course")}" %></h1>
 </div>
 
 <%= link_to new_course_path do %>
-  <h5><i class="fa fa-plus-circle"></i> Create a New Course</h5>
+  <h5><i class="fa fa-plus-circle"></i> <%= t('courses.create') %></h5>
 <% end %>
-
 
 <div class="widetable">
     <table id="courses" class="ptrAppTable table table-striped table-bordered">
         <thead>
             <tr>
-                <td>Name</td>
-                <td>Catalog</td>
-                <td>Description</td>
-                <td>Dates Scheduled</td>
-                <td>Total Enrollment</td>
+                <td><%= t('courses.name') %></td>
+                <td><%= t('courses.catalog') %></td>
+                <td><%= t('courses.description') %></td>
+                <td><%= t('courses.dates_scheduled') %></td>
+                <td><%= t('courses.total_enrollment') %></td>
             </tr>
         </thead>
         <tbody>

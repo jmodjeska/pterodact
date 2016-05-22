@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :new, :create, :show, :edit, :update]
 
+  # Translations example. Not in use. Probably won't work on Heroku.
+  # resources :translations, only: [:index, :create]
+
   # nonspecific / catch-all routes at the bottom
+
   root to: 'home#index'
 end

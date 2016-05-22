@@ -24,6 +24,7 @@ gem 'email_validator'
 gem 'warden'
 gem 'figaro'
 gem 'roo'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug'
